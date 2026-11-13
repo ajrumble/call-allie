@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Call Allie">
+  <meta name="theme-color" content="#1A1210">
+  <title>Call Allie</title>
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #1A1210;
+      color: #F7EDE8;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: calc(28px + env(safe-area-inset-top)) 24px calc(28px + env(safe-area-inset-bottom));
+      touch-action: manipulation;
+    }
+    .mark {
+      width: 88px;
+      height: 88px;
+      border-radius: 24px;
+      background: #C45C4A url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADgElEQVR4nO3d3XGbUBSFUZxJV+nAacGuLjWkA7uvPGhG47G1CRb3Bx3Weo8guR8HhBTx9PbyvMAtP2bvAMclDiJxEImDSBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQfRz9g4M8uvP37Yv+P76u+0LHtBT7Z+3bt7EV4UrqXxaGVDGsK1MUXNyTFmweiOk4OSYdSjXGyHV4pi7QsX6OMu7lY/unv/F1v6/Sk2OLYu358pgy5+tFFCdOI6zKsfZk53qxEFz9a852r7D/PRqZYbETUXuc9xcpGE3HuZuvR+nFaKycYw8cAsMiZvKxsF+4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iAqG8fI5zZWfUZk2TjYr/JzZS8HdNen81WdGReV47iovX5dOa0QiYOo/mllo1M9pH4jk2NZbl20Vn3I9LeII3agj7PHsV7Ayfs4dRxb1v7MfZw6DtYVebfy/vr7UO8vLvPm6y5tn0M3/zqDx1iROI4mlbrljv5K5QM+EPhIHBOkNd44/IYlUuea445/rC2L0e9s9emVv7uhAafROnEsHfrovQDX179vQ713r1Qc91m/Pjizp7eX59n70Nh9i/q4n630u/goGMfyUEu7nzjucZ5EOvVR+ZpjzP2AwvfXi9/nuK5c8ylSuImr4nFcnWEtm6t8WmEncRCJo4G556x+WxcHkTjamDU8um5XHETiaGb88Oi9RXG0NLKPAduq/NnKRF0/1hmWoMlBJI4u+h3cI89c4uilxyoOvuYVB5E4Omp7oI9/qyyOvlqt6JQ7sOLobv+6zro3Lw4icYyw59Cf+H0AcQxy3xrP/aaIOIjEMc53x8D0L0WLY6jt6z29jEUcrBDHaA/0K3XimOBRft9SHHM8xC/jioNIHNMc/wfXxTHTxxqOVsYiDlaIY7LLwDjg2Fj81wRWmBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIPoHZHTQiY0nAycAAAAASUVORK5CYII=") center / cover no-repeat;
+      box-shadow: 0 12px 30px rgba(196, 92, 74, 0.35);
+      margin-bottom: 28px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      font-weight: 650;
+      letter-spacing: -0.03em;
+    }
+    p.status {
+      margin: 0 0 32px;
+      color: rgba(247, 237, 232, 0.72);
+      font-size: 16px;
+      text-align: center;
+      line-height: 1.4;
+    }
+    a.call {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: min(100%, 320px);
+      min-height: 58px;
+      padding: 16px 22px;
+      border-radius: 999px;
+      background: #C45C4A;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(196, 92, 74, 0.38);
+    }
+    a.call:active { transform: scale(0.98); }
+    .hint {
+      margin-top: 36px;
+      max-width: 320px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.45;
+      color: rgba(247, 237, 232, 0.5);
+    }
+    .standalone .hint { display: none; }
+  </style>
+</head>
+<body>
+  <div class="mark" role="img" aria-label="Call Allie"></div>
+  <h1>Call Allie</h1>
+  <p class="status" id="status">Starting the call…</p>
+  <a class="call" id="callBtn" href="tel:+16145723089">Call Allie</a>
+  <p class="hint" id="hint">If the call does not start on its own, tap the button. On iPhone, open this page in Safari, then tap Share and Add to Home Screen.</p>
+  <script>
+    (function () {
+      var TEL = "tel:+16145723089";
+      var statusEl = document.getElementById("status");
+      var standalone = window.navigator.standalone === true ||
+        (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+      if (standalone) document.body.className += " standalone";
+
+      function startCall() {
+        window.location.href = TEL;
+      }
+
+      window.addEventListener("pageshow", function (e) {
+        if (e.persisted) {
+          statusEl.textContent = "Tap the button to call again.";
+          return;
+        }
+        statusEl.textContent = "Starting the call…";
+        setTimeout(startCall, 250);
+      });
+
+      document.getElementById("callBtn").addEventListener("click", function () {
+        statusEl.textContent = "Starting the call…";
+      });
+    })();
+  </script>
+</body>
+</html>
